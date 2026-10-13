@@ -17,4 +17,14 @@ function createGrid(size) {
     }
 }
 
-createGrid(16); // Create initial grid with 16x16 squares
+document.getElementById('resizebtn').addEventListener('click', () => {
+    const newSize = prompt('Enter new grid size (1-100):');
+    if (newSize >= 1 && newSize <= 100) {
+        createGrid(newSize);
+    } else {
+        alert('Enter a valid number between 1 and 100.');
+    }
+}); 
+
+
+createGrid(); // Create initial grid with 16x16 squares
