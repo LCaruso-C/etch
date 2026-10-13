@@ -15,6 +15,13 @@ function createGrid(size) {
         grid.style.height = `${gridSize}px`;
 
         grid.addEventListener('mouseover', () => {
+           const r = Math.floor(Math.random() * 256);
+           const g = Math.floor(Math.random() * 256);
+           const b = Math.floor(Math.random() * 256);
+           grid.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        });
+
+        grid.addEventListener('dblclick', () => {   
             grid.style.backgroundColor = 'black';
         });
 
