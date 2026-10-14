@@ -3,8 +3,7 @@ const resizeBtn = document.getElementById('resizebtn');
 
 //creating grid squares and adding event listener to change color on hover
 function createGrid(size) {
-    container.innerHTML = ''; // Clear existing grid
-
+    
     const gridSize = 960 / size; // Calculate the size of each cell based on the grid size
    
     for (let i = 0; i < size * size; i++) {
@@ -40,4 +39,4 @@ document.getElementById('resizebtn').addEventListener('click', () => {
 }); 
 
 
-createGrid(16); // Create initial grid with 16x16 squares
+createGrid(); // Create initial grid with 16x16 squares
