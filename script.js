@@ -1,4 +1,4 @@
-const container = document.getElementById("container");
+const container = document.getElementById('container');
 
 // Default grid size
 createGrid(16);
@@ -24,8 +24,7 @@ function createGrid(size) {
       square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 
     });
-
-    container.appendChild(square);
+ container.appendChild(square);
   }
 }
 
