@@ -4,8 +4,7 @@ const container = document.getElementById("container");
 createGrid(16);
 
 function createGrid(size) {
-  container.innerHTML = ""; // Clear previous grid
-
+  
   const squareSize = 960 / size;
 
   for (let i = 0; i < size * size; i++) {
