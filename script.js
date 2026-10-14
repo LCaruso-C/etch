@@ -1,42 +1,47 @@
-const container = document.getElementById('grid-container');   
-const resizeBtn = document.getElementById('resizebtn'); 
+const container = document.getElementById("container");
 
-//creating grid squares and adding event listener to change color on hover
+// Default grid size
+createGrid(16);
+
 function createGrid(size) {
-    container.innerHTML = '16'; 
-    const gridSize = 960 / size; // Calculate the size of each cell based on the grid size
-   
-    for (let i = 0; i < size * size; i++) {
-        const grid = document.createElement('div');
-        grid.classList.add('grid-square');
+  container.innerHTML = ""; // Clear previous grid
 
-        grid.style.width = `${gridSize}px`;
-        grid.style.height = `${gridSize}px`;
+  const squareSize = 960 / size;
 
-        grid.addEventListener('mouseover', () => {
-           const r = Math.floor(Math.random() * 256);
-           const g = Math.floor(Math.random() * 256);
-           const b = Math.floor(Math.random() * 256);
-           grid.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-        });
+  for (let i = 0; i < size * size; i++) {
+    const square = document.createElement("div");
+    square.classList.add("square");
+    square.style.width = `${squareSize}px`;
+    square.style.height = `${squareSize}px`;
 
-        grid.addEventListener('dblclick', () => {   
-            grid.style.backgroundColor = 'black';
-        });
 
-        container.appendChild(grid);
-    }
+//change the color of the square to a random color when hovered over
+    square.addEventListener("mouseover", () => {
+      // RANDOM RGB MODE
+      const r = Math.floor(Math.random() * 256);
+      const g = Math.floor(Math.random() * 256);
+      const b = Math.floor(Math.random() * 256);
+
+      square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+
+    });
+
+    container.appendChild(square);
+  }
 }
 
-document.getElementById('resizebtn').addEventListener('click', () => {
-    let newSize = prompt('Enter new grid size (1-100):');
-   
-    if (newSize >= 1 && newSize <= 100) {
-        createGrid(newSize);
-    } else {
-        alert('Enter a valid number between 1 and 100.');
-    }
-}); 
+// Resize button
+document.getElementById("resizeBtn").addEventListener("click", () => {
+  let newSize = prompt("Enter new grid size (max 100):");
 
+  if (newSize === null) return;
 
-createGrid(16); // Create initial grid with 16x16 squares
+  newSize = parseInt(newSize);
+
+  if (newSize > 0 && newSize <= 100) {
+    createGrid(newSize);
+  } else {
+    alert("Enter a number between 1 and 100.");
+  }
+});
+
